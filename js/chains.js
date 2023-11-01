@@ -339,7 +339,7 @@ class Aptos extends Chains {
             "https://aptoscan.com/address/",
             "",
             false,
-            "#303030",
+            "#404040",
             WHITE,
             [/(^|\s|:|-)((?:0x)[0-9A-Za-z]{64})(\s|$)/g],
         );
@@ -483,6 +483,19 @@ class Starknet extends Chains {
     }
 }
 
+class Scroll extends EVM {
+    constructor() {
+        super(
+            "Scroll",
+            "https://scrollscan.com/address/",
+            "",
+            false,
+            "#EB7106",
+            BLACK
+        );
+    }
+}
+
 class PolygonZkEVM extends EVM {
     constructor() {
         super(
@@ -525,6 +538,20 @@ class Havah extends Chains {
     }
 }
 
+class Cosmos extends Chains {
+    constructor() {
+        super(
+            "Cosmos",
+            "https://www.mintscan.io/cosmos/address/",
+            "",
+            false,
+            "linear-gradient(to bottom, #704DB6, #000000, #704DB6)",
+            WHITE,
+            [/(^|\s|:|-)(cosmos1[0-9a-z]{38,58})(\s|$)/gi]
+        );
+    }
+}
+
 class Sei extends Chains {
     constructor() {
         super(
@@ -534,7 +561,21 @@ class Sei extends Chains {
             false,
             "#992C4B",
             WHITE,
-            [/(^|\s|:|-)(sei1[0-9a-z]{38})(\s|$)/gi]
+            [/(^|\s|:|-)(sei1[0-9a-z]{38,58})(\s|$)/gi]
+        );
+    }
+}
+
+class Celestia extends Chains {
+    constructor() {
+        super(
+            "Celestia",
+            "https://celestia.explorers.guru/account/",
+            "",
+            false,
+            "linear-gradient(to bottom, #7B2BF9, #EFEFEF)",
+            BLACK,
+            [/(^|\s|:|-)(celestia1[0-9a-z]{38,58})(\s|$)/gi]
         );
     }
 }
@@ -586,10 +627,13 @@ const chainClasses = {
     Bora,
     ZkSyncEra,
     Starknet,
+    Scroll,
     PolygonZkEVM,
     Mina,
     Havah,
+    Cosmos,
     Sei,
+    Celestia,
     Wax,
 };
 
