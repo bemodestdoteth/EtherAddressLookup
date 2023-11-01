@@ -243,7 +243,8 @@ class EtherAddressLookup {
                 return {
                     address: retrievedAddresses[i][0],
                     label: retrievedAddresses[i][1],
-                    chain: retrievedAddresses[i][2]
+                    chain: retrievedAddresses[i][2],
+                    comment: retrievedAddresses[i][3],
                 };
             }
         }
@@ -257,7 +258,15 @@ class EtherAddressLookup {
      */
     generateReplacementContent(label)
     {
-        return `<a title="See this address on the blockchain explorer" ` +
+        let imgPrefix = "";
+        if (label.comment.includes("Upbit")) {
+            imgPrefix = `<img src="https://assets.coingecko.com/markets/images/117/small/upbit.png?1520388800" style="width:1.5em;height:auto;">`
+        }
+        else if (label.comment.includes("Bithumb")) {
+            imgPrefix = `<img src="https://assets.coingecko.com/markets/images/6/small/bithumb_BI.png?1573104549" style="width:1.5em;height:auto;">`
+        }
+        return  imgPrefix +
+                `<a title="See this address on the blockchain explorer" ` +
                 `href="${label.chain.blockExplorerPrefix}${label.address}${label.chain.blockExplorerPostfix}" ` +
                 `class="ext-etheraddresslookup-link" ` +
                 `style="padding: 2px; background: ${label.chain.bgColor}; color: ${label.chain.fontColor}!important; border: 1px solid;"` + 
