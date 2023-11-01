@@ -205,12 +205,12 @@ class Labels {
             // Generate a signature using the secret key and the current Unix timestamp
             const currentTimestamp = Math.floor(Date.now() / 1000).toString();
             const signature = await this.hashString(secretKey + currentTimestamp);
-        
+
             // Send the request to the server along with the signature and timestamp
             const serverConfig = {method: 'GET', headers: {
-                'X-Signature': signature,
-                'X-Timestamp': currentTimestamp
-            }
+                    'X-Signature': signature,
+                    'X-Timestamp': currentTimestamp
+                }
             };
             const serverResponse = await fetch(downloadURL, serverConfig);
 
@@ -257,11 +257,60 @@ class Labels {
     }
 
     /**
-     * @name sendDataToServer
+     * @name sendDeleteDataToServer
+     * @desc Send delete data to my server and save label data to AWS S3 with signed URL
+     * @returns {void}
+     */
+    async sendDeleteDataToServer(address) {
+        try {
+            // Only if the data exists in local storage
+            const localData = await this.get(LABELLED_ADDRESSES_KEY);
+            if (localData[LABELLED_ADDRESSES_KEY] === undefined) {
+                console.log("Data does not exist in local storage.");
+                return;
+            }
+
+            // Read the secret key from "hash.txt" (assuming you have a way to read it, e.g., via a fetch request)
+            const response = await fetch('./hash.txt');
+            const text = await response.text();
+            const lines = text.split('\n');
+            const secretKey = lines[0].trim();
+            const deleteURL = lines[3].trim();
+
+            // Generate a signature using the secret key and the current Unix timestamp
+            const currentTimestamp = Math.floor(Date.now() / 1000).toString();
+            const signature = await this.hashString(secretKey + currentTimestamp);
+            const body = JSON.stringify({address: address});
+            // Send the request to the server along with the signature and timestamp
+            const serverConfig = {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Signature': signature,
+                    'X-Timestamp': currentTimestamp
+                },
+                body: body
+            };
+            const serverResponse = await fetch(deleteURL, serverConfig);
+
+            if (serverResponse.status !== 200) {
+                alert(`${serverResponse.status}: ${serverResponse.statusText}`);
+                return;
+            }
+
+            const result = await serverResponse.json();
+            return result.message;
+        } catch(err) {
+            console.error('Error: ', err);
+        }
+    }
+
+    /**
+     * @name sendAddDataToServer
      * @desc Send data to my server and save label data to AWS S3 with signed URL
      * @returns {void}
      */
-    async sendDataToServer() {
+    async sendAddDataToServer(address, name, chain, comment, tracking) {
         try {
             // Only if the data exists in local storage
             const localData = await this.get(LABELLED_ADDRESSES_KEY);
@@ -276,51 +325,107 @@ class Labels {
             const lines = text.split('\n');
             const secretKey = lines[0].trim();
             const uploadURL = lines[2].trim();
-        
+
             // Generate a signature using the secret key and the current Unix timestamp
             const currentTimestamp = Math.floor(Date.now() / 1000).toString();
             const signature = await this.hashString(secretKey + currentTimestamp);
-        
+            const body = JSON.stringify({[address]: {
+                    "chain": chain,
+                    "comment": comment,
+                    "label": name,
+                    "tracking": tracking
+                }
+            });
             // Send the request to the server along with the signature and timestamp
             const serverConfig = {
-                method: 'GET', 
+                method: 'POST', 
                 headers: {
+                    'Content-Type': 'application/json',
                     'X-Signature': signature,
                     'X-Timestamp': currentTimestamp
-                }
+                },
+                body: body
             };
             const serverResponse = await fetch(uploadURL, serverConfig);
-            
+
             if (serverResponse.status !== 200) {
-                console.log('Looks like there was a problem when downloading data from the server. Status Code: ' + serverResponse.status);
+                alert(`${serverResponse.status}: ${serverResponse.statusText
+                }`);
                 return;
             }
 
             const result = await serverResponse.json();
-
-            // Convert chain class to chain string
-            for (let value of Object.values(localData[LABELLED_ADDRESSES_KEY])) {
-                console.log(value);
-                if ("chain" in value) {
-                    value.chain = value.chain.name;
-                }
-            }
-            console.log(localData);
-
-            const signedURLresponse = await fetch(result.url, {
-                method: 'PUT',
-                body: JSON.stringify(localData),
-            });
-            if (signedURLresponse.status !== 200) {
-                console.log('Looks like there was a problem when accessing signed url. Status Code: ' + s3Response.status);
-                return;
-            }
-
-            console.log('Successfully uploaded data to server.');
+            return result.message;
         } catch(err) {
             console.error('Error: ', err);
         }
     }
+
+    /**
+     * @name sendDataToServer
+     * @desc Send data to my server and save label data to AWS S3 with signed URL
+     * @returns {void}
+     */
+    // async sendDataToServer() {
+    //     try {
+    //         // Only if the data exists in local storage
+    //         const localData = await this.get(LABELLED_ADDRESSES_KEY);
+    //         if (localData[LABELLED_ADDRESSES_KEY] === undefined) {
+    //             console.log("Data does not exist in local storage.");
+    //             return;
+    //         }
+
+    //         // Read the secret key from "hash.txt" (assuming you have a way to read it, e.g., via a fetch request)
+    //         const response = await fetch('./hash.txt');
+    //         const text = await response.text();
+    //         const lines = text.split('\n');
+    //         const secretKey = lines[0].trim();
+    //         const uploadURL = lines[2].trim();
+
+    //         // Generate a signature using the secret key and the current Unix timestamp
+    //         const currentTimestamp = Math.floor(Date.now() / 1000).toString();
+    //         const signature = await this.hashString(secretKey + currentTimestamp);
+
+    //         // Send the request to the server along with the signature and timestamp
+    //         const serverConfig = {
+    //             method: 'GET', 
+    //             headers: {
+    //                 'X-Signature': signature,
+    //                 'X-Timestamp': currentTimestamp
+    //             }
+    //         };
+    //         const serverResponse = await fetch(uploadURL, serverConfig);
+
+    //         if (serverResponse.status !== 200) {
+    //             console.log('Looks like there was a problem when downloading data from the server. Status Code: ' + serverResponse.status);
+    //             return;
+    //         }
+
+    //         const result = await serverResponse.json();
+
+    //         // Convert chain class to chain string
+    //         for (let value of Object.values(localData[LABELLED_ADDRESSES_KEY])) {
+    //             console.log(value);
+    //             if ("chain" in value) {
+    //                 value.chain = value.chain.name;
+    //             }
+    //         }
+    //         console.log(localData);
+
+    //         const signedURLresponse = await fetch(result.url, {
+    //             method: 'PUT',
+    //             body: JSON.stringify(localData),
+    //         });
+    //         if (signedURLresponse.status !== 200) {
+    //             console.log('Looks like there was a problem when accessing signed url. Status Code: ' + s3Response.status);
+    //             return;
+    //         }
+
+    //         console.log('Successfully uploaded data to server.');
+    //     } catch(err) {
+    //         console.error('Error: ', err);
+    //     }
+    // }
 
     /**
      * @name addLabelsListEvents
@@ -335,10 +440,12 @@ class Labels {
                 const address = event.target.getAttribute('data-ext-etheraddresslookup-label-id');
 
                 // await this.clear();
-                await this.remove(address);
-                await this.sendDataToServer();
-                await this.updateLabelsList();
-                alert(`Address ${address} successfully deleted.`);
+                const response = await this.sendDeleteDataToServer(address);
+                if (response !== undefined) {
+                    await this.remove(address);
+                    await this.updateLabelsList();
+                    alert(`Address ${address} successfully deleted.`);
+                }
             });
         });
 
@@ -477,10 +584,12 @@ class Labels {
             } else if (!name || !address || !chain) {
                 alert('Please make sure that "Name", "Address", and "Chain" is filled.');
             } else {
-                await this.add(address, name, chain, comment, tracking);
-                await this.sendDataToServer();
-                await this.updateLabelsList();
-                alert(`Address ${address} successfully added.`);
+                const response = await this.sendAddDataToServer(address, name, chain.name, comment, tracking);
+                if (response !== undefined) {
+                    await this.add(address, name, chain, comment, tracking);
+                    await this.updateLabelsList();
+                    alert(response);
+                }
             }
         });
     }
