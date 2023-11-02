@@ -336,7 +336,7 @@ class Aptos extends Chains {
     constructor() {
         super(
             "Aptos",
-            "https://aptoscan.com/address/",
+            "https://explorer.aptoslabs.com/account/",
             "",
             false,
             "#404040",
