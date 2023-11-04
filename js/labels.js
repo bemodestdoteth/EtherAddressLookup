@@ -248,11 +248,9 @@ class Labels {
                 });
                 await this.set(data);
             }
-            await this.updateLabelsList();
         }
       catch(err) {
           console.error('Error: ', err);
-          await this.updateLabelsList();
       }
     }
 
@@ -443,7 +441,6 @@ class Labels {
                 const response = await this.sendDeleteDataToServer(address);
                 if (response !== undefined) {
                     await this.remove(address);
-                    await this.updateLabelsList();
                     alert(`Address ${address} successfully deleted.`);
                 }
             });
@@ -546,9 +543,14 @@ class Labels {
      */
     setupFilterHandler() {
         // Set up the search bar event handler
-        document.getElementById('search-label').addEventListener('input', async (event) => {
-            const query = event.target.value;
-            await this.updateLabelsList(query);
+        document.getElementById('form-label-search').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const query = document.getElementById('ext-etheraddresslookup-search-label').value;
+            if (query === "") {
+                alert("Please enter a search query.");
+            } else {
+                await this.updateLabelsList(query);
+            }
         });
     }
 
@@ -587,7 +589,6 @@ class Labels {
                 const response = await this.sendAddDataToServer(address, name, chain.name, comment, tracking);
                 if (response !== undefined) {
                     await this.add(address, name, chain, comment, tracking);
-                    await this.updateLabelsList();
                     alert(response);
                 }
             }
