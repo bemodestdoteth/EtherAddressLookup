@@ -3,7 +3,7 @@
 }
 
 /* Custom Dropdown elements */
-#ext-etheraddresslookup-label-color {
+#label-chain {
   position: relative;
   width: 200px;
   border: 1px solid #ccc;
@@ -19,23 +19,16 @@
   background-color: rgba(255, 255, 255, 0.2); /* or any hover effect you prefer */
 }
 
-#ext-etheraddresslookup-dropdown-value {
+#label-dropdown-value {
   font-weight: bold;
   border: 2px solid black;
   padding: 2px;
   padding-left: 5px;
 }
 
-#ext-etheraddresslookup-label-color.open .custom-option {
+#label-chain.open .custom-option {
   display: block;
 }
-
-/* .ext-etheraddresslookup-link-highlight {
-  padding: 2px;
-  background: #F2EAAC;
-  color: #000;
-  border: 1px solid #C7BC67;
-} */
 
 .ext-etheraddresslookup-link-no_highlight {
   padding: 0px;
@@ -154,6 +147,19 @@
   .ext-etheraddresslookup-label {
     border: 1px solid #000;
   }
+}
+
+.ext-etheraddresslookup-label-img {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  -webkit-box-shadow: inset rgba(255, 255, 255, 0.6) 0 2px 2px, inset rgba(0, 0, 0, 0.3) 0 -2px 6px;
+          box-shadow: inset rgba(255, 255, 255, 0.6) 0 2px 2px, inset rgba(0, 0, 0, 0.3) 0 -2px 6px;
+  margin-bottom: -0.2em;
+  border-radius: 0.25rem;
 }
 
 .ext-etheraddresslookup-label {

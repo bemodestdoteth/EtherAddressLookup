@@ -34,8 +34,8 @@
                 </a>
             </li>
             <li class="ext-etheraddresslookup-nav-item">
-                <a class="ext-etheraddresslookup-nav-link" id="ext-etheraddresslookup-website_exception-tab" data-toggle="ext-etheraddresslookup-tab" data-duration="350" data-height="true" href="#ext-etheraddresslookup-website_exception" role="tab" aria-controls="ext-etheraddresslookup-website_exception" aria-expanded="false">
-                    Exceptions
+                <a class="ext-etheraddresslookup-nav-link" id="ext-etheraddresslookup-entities-tab" data-toggle="ext-etheraddresslookup-tab" data-duration="350" data-height="true" href="#ext-etheraddresslookup-entities" role="tab" aria-controls="ext-etheraddresslookup-entities" aria-expanded="false">
+                    Entities
                 </a>
             </li>            
         </ul>
@@ -108,18 +108,6 @@
 
             <!-- LABELS PANEL -->
             <div class="ext-etheraddresslookup-tab-pane fade " id="ext-etheraddresslookup-labels" role="tabpanel" aria-labelledby="ext-etheraddresslookup-labels-tab" aria-expanded="false">
-                
-                <!-- Download Labels from the extension as JSON -->
-                <div>
-                    <p><b>Download Labels:</b></p>
-
-                    <div id="ext-etheraddresslookup-download-labels">
-                        <button id="download-json" class="btn btn-success btn-small">Donwload Whole Labels as JSON</button>
-                    </div>
-                </div>
-
-                <hr/>
-
                 <!-- New Label -->
                 <div id="ext-etheraddresslookup-new-labels">
 
@@ -128,39 +116,47 @@
                         <input
                             class="form-control"
                             type="text"
-                            name="ext-etheraddresslookup-label-name"
-                            id="ext-etheraddresslookup-label-name"
+                            name="label-name"
+                            id="label-name"
                             placeholder="Label Name"
                         />
                         <input
                             class="form-control"
                             type="text"
-                            name="ext-etheraddresslookup-label-address"
-                            id="ext-etheraddresslookup-label-address"
+                            name="label-address"
+                            id="label-address"
                             placeholder="Wallet Address"
                         />
                         <input
                             class="form-control"
                             type="text"
-                            name="ext-etheraddresslookup-label-comment"
-                            id="ext-etheraddresslookup-label-comment"
-                            placeholder="Comment"
+                            name="label-comment"
+                            id="label-comment"
+                            placeholder="Comment (Optional)"
                         />
+                        <select
+                            class="form-control"
+                            name="label-entity"
+                            id="label-entity"
+                        >
+                            <option value="" style="color: #AFAFAF;" disabled selected hidden>Entity (Optional)</option>
+                            <!-- Entity list Goes Here... -->
+                        </select>
                         <div class="form-check">
                             <input
                                 class="form-check-input"
                                 type="checkbox"
-                                name="ext-etheraddresslookup-label-track"
-                                id="ext-etheraddresslookup-label-track"
+                                name="label-track"
+                                id="label-track"
                             />
-                            <label class="form-check-label" for="ext-etheraddresslookup-label-track">
+                            <label class="form-check-label" for="label-track">
                                 Track This Wallet
                             </label>
                         </div>
                         <div
                             class="form-control"
-                            name="ext-etheraddresslookup-label-color"
-                            id="ext-etheraddresslookup-label-color"
+                            name="label-chain"
+                            id="label-chain"
                         >
                         </div>
                         <button class="btn btn-success btn-small" type="submit">Save</button>
@@ -183,18 +179,57 @@
                     </div>
                 </div>
             </div>
+            <div class="ext-etheraddresslookup-tab-pane fade " id="ext-etheraddresslookup-entities" role="tabpanel" aria-labelledby="ext-etheraddresslookup-website_exception-tab" aria-expanded="false">
+                <div id="ext-etheraddresslookup-entities-container">
+                    <p>Add or delete entities</p>
 
-            <div class="ext-etheraddresslookup-tab-pane fade " id="ext-etheraddresslookup-website_exception" role="tabpanel" aria-labelledby="ext-etheraddresslookup-website_exception-tab" aria-expanded="false">
-                <div id="ext-etheraddresslookup-website_exception_container">
-                    <h3>Website Exceptions</h3>
+                    <div>
+                        <select id="select-entities" size="15" style="width:100%;">
+                            <!-- Enities from server goes here... -->
+                        </select>
 
-                    <p>Input a website that has iframe to add it into an exception when doing labelling job.</p>
+                        <hr/>
 
-                    <div id="ext-etheraddresslookup-iframe-exception-websites">
-                        <textarea id="exceptionSiteLinks" rows="10" placeholder="Enter website links here..." readonly style="width:100%;"></textarea>
-                        <button class="btn btn-success btn-small" id="iframeAddButton">Add</button>
-                        <button class="btn btn-success btn-small" id="iframeDeleteButton">Delete</button>
-                        <button class="btn btn-success btn-small" id="iframeModifyButton">Modify</button>
+                        <!-- Todo -->
+                        <!-- <form id="form-add-entities">
+                            <input
+                                class="form-control"
+                                type="text"
+                                name="entity-name"
+                                id="entity-name"
+                                placeholder="Entity Name"
+                            />
+                            <input
+                                class="form-control"
+                                type="text"
+                                name="entity-image"
+                                id="entity-image"
+                                placeholder="Entity image (Optional)"
+                            />
+                            <input
+                                class="form-control"
+                                type="text"
+                                name="entity-comment"
+                                id="entity-comment"
+                                placeholder="Comment (Optional)"
+                            />
+                            <div class="form-check">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    name="entity-track"
+                                    id="entity-track"
+                                />
+                                <label class="form-check-entity" for="entity-track">
+                                    Track This Entity
+                                </label>
+                            </div>
+                            <button class="btn btn-success btn-small" id="ext-etheraddresslookup-entities-add">Add</button>
+                        </form> -->
+                        <!-- <form id="form-delete-entities">
+                            <input disabled type="text" id="entity-to-delete" placeholder="Select an entity to delete">
+                            <button class="btn btn-success btn-small" id="ext-etheraddresslookup-entities-delete">Delete</button>
+                        </form> -->
                     </div>
                 </div>
             </div>
@@ -224,10 +259,10 @@
 <script src="js/app/toggleBookmarks.js"></script>
 <script src="/js/app/toggleAddressLookups.js"></script>
 <script src="js/app/lib/nat-twbs-modal-popover.js"></script>
+<script src="js/options/consts.js"></script>
 <script src="js/chains.js"></script>
+<script src="js/entity.js"></script>
 <script src="js/labels.js"></script>
-<script src="js/exceptions.js"></script>
 <script src="js/options/labels.js"></script>
-<script src="js/options/exceptions.js"></script>
 </body>
 </html>

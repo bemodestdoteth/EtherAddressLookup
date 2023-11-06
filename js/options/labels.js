@@ -1,8 +1,14 @@
 window.addEventListener('load', () => {
     const labels = new Labels();
+    const entities = new Entities();
+    labels.fetchDataFromServer();
     labels.setupFormSubmitHandler();
     labels.setupFilterHandler();
-    labels.setupDownloadHandler();
     labels.setupResetHandler();
     labels.updateChainOption();
+    entities.fetchDataFromServer();
+    entities.setupEntityDropdownHandler();
+    entities.updateOption();
+    entities.setupEntityTextArea()
+    entities.setupFormSubmitHandler();
 });

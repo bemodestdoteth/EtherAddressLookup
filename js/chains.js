@@ -2,8 +2,9 @@ const BLACK = "#303030";
 const WHITE = "#EFEFEF";
 
 class Chains {
-    constructor(name, blockExplorerPrefix, blockExplorerPostfix, blockExplorerHasIframe, bgColor, fontColor, addrRegexPatterns, addrCaseSensitive=false) {
+    constructor(name, code, blockExplorerPrefix, blockExplorerPostfix, blockExplorerHasIframe, bgColor, fontColor, addrRegexPatterns, addrCaseSensitive=false) {
         this.name = name;
+        this.code = code;
         this.blockExplorerPrefix = blockExplorerPrefix;
         this.blockExplorerPostfix = blockExplorerPostfix;
         this.blockExplorerHasIframe = blockExplorerHasIframe;
@@ -21,9 +22,10 @@ class Chains {
 }
 
 class EVM extends Chains {
-    constructor(name, blockExplorerPrefix, blockExplorerPostfix, blockExplorerHasIframe, bgColor, fontColor) {
+    constructor(name, code, blockExplorerPrefix, blockExplorerPostfix, blockExplorerHasIframe, bgColor, fontColor) {
         super(
             name,
+            code,
             blockExplorerPrefix,
             blockExplorerPostfix,
             blockExplorerHasIframe,
@@ -38,6 +40,7 @@ class Ethereum extends EVM {
     constructor() {
         super(
             "Ethereum",
+            "ETH",
             "https://etherscan.io/address/",
             "",
             true,
@@ -65,6 +68,7 @@ class Bitcoin extends Chains {
     constructor() {
         super(
             "Bitcoin",
+            "BTC",
             "https://explorer.btc.com/btc/address/",
             "",
             false,
@@ -80,6 +84,7 @@ class BNBChain extends EVM {
     constructor() {
         super(
             "BNBChain",
+            "BSC",
             "https://bscscan.com/address/",
             "",
             false,
@@ -95,6 +100,7 @@ class Polygon extends EVM {
     constructor() {
         super(
             "Polygon",
+            "POL",
             "https://polygonscan.com/address/",
             "",
             false,
@@ -119,6 +125,7 @@ class Avalanche extends EVM {
     constructor() {
         super(
             "Avalanche",
+            "AVAXC",
             "https://snowtrace.io/address/",
             "",
             false,
@@ -132,6 +139,7 @@ class Arbitrum extends EVM {
     constructor() {
         super(
             "Arbitrum",
+            "ARB",
             "https://arbiscan.io/address/",
             "",
             false,
@@ -147,6 +155,7 @@ class ArbitrumNova extends EVM {
     constructor() {
         super(
             "ArbitrumNova",
+            "ARBNOVA",
             "https://nova.arbiscan.io/address/",
             "",
             false,
@@ -160,6 +169,7 @@ class Optimism extends EVM {
     constructor() {
         super(
             "Optimism",
+            "OP",
             "https://optimistic.etherscan.io/address/",
             "",
             false,
@@ -173,6 +183,7 @@ class Tron extends Chains {
     constructor() {
         super(
             "Tron",
+            "TRX",
             "https://tronscan.org/#/address/",
             "",
             false,
@@ -188,6 +199,7 @@ class Fantom extends EVM {
     constructor() {
         super(
             "Fantom",
+            "FTM",
             "https://ftmscan.com/address/",
             "",
             false,
@@ -201,6 +213,7 @@ class Klaytn extends EVM {
     constructor() {
         super(
             "Klaytn",
+            "KLAY",
             "https://scope.klaytn.com/account/",
             "",
             false,
@@ -214,6 +227,7 @@ class Rei extends EVM {
     constructor() {
         super(
             "Rei",
+            "REI",
             "https://scan.rei.network/address/",
             "",
             false,
@@ -227,6 +241,7 @@ class Gnosis extends EVM {
     constructor() {
         super(
             "Gnosis",
+            "XDAI",
             "https://gnosisscan.io/address/",
             "",
             false,
@@ -240,6 +255,7 @@ class Moonbeam extends EVM {
     constructor() {
         super(
             "Moonbeam",
+            "GLMR",
             "https://moonscan.io/address/",
             "",
             false,
@@ -253,6 +269,7 @@ class Celo extends EVM {
     constructor() {
         super(
             "Celo",
+            "CELO",
             "https://celoscan.io/address/",
             "",
             false,
@@ -266,6 +283,7 @@ class Base extends EVM {
     constructor() {
         super(
             "Base",
+            "BASE",
             "https://basescan.org/address/",
             "",
             false,
@@ -279,6 +297,7 @@ class Linea extends EVM {
     constructor() {
         super(
             "Linea",
+            "LINEA",
             "https://lineascan.build/address/",
             "",
             false,
@@ -292,6 +311,7 @@ class Flow extends Chains {
     constructor() {
         super(
             "Flow",
+            "FLOW",
             "https://flowscan.org/account/",
             "",
             false,
@@ -306,6 +326,7 @@ class Ark extends Chains {
     constructor() {
         super(
             "Ark",
+            "ARK",
             "https://live.arkscan.io/addresses/",
             "",
             false,
@@ -321,6 +342,7 @@ class Solana extends Chains {
     constructor() {
         super(
             "Solana",
+            "SOL",
             "https://solscan.io/account/",
             "",
             false,
@@ -336,6 +358,7 @@ class Aptos extends Chains {
     constructor() {
         super(
             "Aptos",
+            "APTOS",
             "https://explorer.aptoslabs.com/account/",
             "",
             false,
@@ -350,6 +373,7 @@ class Sui extends Chains {
     constructor() {
         super(
             "Sui",
+            "SUI",
             "https://suiscan.xyz/mainnet/address/",
             "",
             false,
@@ -364,6 +388,7 @@ class Near extends Chains {
     constructor() {
         super(
             "Near",
+            "NEAR",
             "https://nearblocks.io/address/",
             "",
             false,
@@ -381,6 +406,7 @@ class Aurora extends EVM {
     constructor() {
         super(
             "Aurora",
+            "AURORA",
             "https://explorer.aurora.dev/address/",
             "",
             false,
@@ -394,6 +420,7 @@ class Chiliz extends EVM {
     constructor() {
         super(
             "Chiliz",
+            "CHZ",
             "https://scan.chiliz.com/address/",
             "",
             false,
@@ -407,6 +434,7 @@ class ChilizOld extends EVM {
     constructor() {
         super(
             "ChilizOld",
+            "CHZOLD",
             "https://explorer.chiliz.com/address/",
             "",
             false,
@@ -420,6 +448,7 @@ class Oasys extends EVM {
     constructor() {
         super(
             "Oasys",
+            "OAS",
             "https://scan.oasys.games/address/",
             "",
             false,
@@ -433,6 +462,7 @@ class Wemix extends EVM {
     constructor() {
         super(
             "Wemix",
+            "WEMIX",
             "https://wemixscan.com/address/",
             "",
             false,
@@ -446,6 +476,7 @@ class Bora extends EVM {
     constructor() {
         super(
             "Bora",
+            "BORA",
             "https://scope.boraportal.com/address/",
             "",
             false,
@@ -459,6 +490,7 @@ class ZkSyncEra extends EVM {
     constructor() {
         super(
             "ZkSyncEra",
+            "ZKSYNC",
             "https://explorer.zksync.io/address/",
             "",
             false,
@@ -472,6 +504,7 @@ class Starknet extends Chains {
     constructor() {
         super(
             "Starknet",
+            "STARK",
             "https://starkscan.co/contract/",
             "",
             false,
@@ -487,6 +520,7 @@ class Scroll extends EVM {
     constructor() {
         super(
             "Scroll",
+            "SCROLL",
             "https://scrollscan.com/address/",
             "",
             false,
@@ -500,6 +534,7 @@ class PolygonZkEVM extends EVM {
     constructor() {
         super(
             "PolygonZkEVM",
+            "POLZKEVM",
             "https://zkevm.polygonscan.com/address/",
             "",
             false,
@@ -513,6 +548,7 @@ class Mina extends Chains {
     constructor() {
         super(
             "Mina",
+            "MINA",
             "https://minaexplorer.com/wallet/",
             "",
             false,
@@ -528,6 +564,7 @@ class Havah extends Chains {
     constructor() {
         super(
             "Havah",
+            "HVH",
             "https://scan.havah.io/contract/",
             "",
             false,
@@ -542,6 +579,7 @@ class Cosmos extends Chains {
     constructor() {
         super(
             "Cosmos",
+            "ATOM",
             "https://www.mintscan.io/cosmos/address/",
             "",
             false,
@@ -556,6 +594,7 @@ class Sei extends Chains {
     constructor() {
         super(
             "Sei",
+            "SEI",
             "https://www.seiscan.app/pacific-1/accounts/",
             "",
             false,
@@ -570,6 +609,7 @@ class Celestia extends Chains {
     constructor() {
         super(
             "Celestia",
+            "TIA",
             "https://celestia.explorers.guru/account/",
             "",
             false,
@@ -584,6 +624,7 @@ class Wax extends Chains {
     constructor() {
         super(
             "Wax",
+            "WAX",
             "https://wax.eosauthority.com/account/",
             "",
             false,
