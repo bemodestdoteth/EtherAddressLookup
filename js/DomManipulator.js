@@ -42,8 +42,7 @@ class EtherAddressLookup {
             return [];
         } else {
             return Object.keys(labels[DOM_LABELLED_ADDRESSES_KEY]).map((address) => {
-                const { label, chain, comment, tracking } = labels[DOM_LABELLED_ADDRESSES_KEY][address];
-                return [address, label, chain, comment, tracking];
+                return [address, ...Object.values(labels[DOM_LABELLED_ADDRESSES_KEY][address])];
             });
         }
     }
@@ -177,7 +176,7 @@ class EtherAddressLookup {
         // Get the whitelisted nodes
         for(let i = 0; i < arrWhitelistedTags.length; i++) {
             const objNodes = document.getElementsByTagName(arrWhitelistedTags[i]);
-            console.log(arrWhitelistedTags[i], "||", objNodes.length);
+            // console.log(arrWhitelistedTags[i], "||", objNodes.length);
             //Loop through the whitelisted content
             for(let x = 0; x < objNodes.length; x++) {
                 // if( this.hasIgnoreAttributes(objNodes[x]) ){ continue; }
@@ -242,9 +241,13 @@ class EtherAddressLookup {
                 // Partial match also searches for full match
                 return {
                     address: retrievedAddresses[i][0],
-                    label: retrievedAddresses[i][1],
-                    chain: retrievedAddresses[i][2],
+                    chain: retrievedAddresses[i][1],
+                    code: retrievedAddresses[i][2],
                     comment: retrievedAddresses[i][3],
+                    entity: retrievedAddresses[i][4],
+                    entityImage: retrievedAddresses[i][5],
+                    label: retrievedAddresses[i][6],
+                    tracking: retrievedAddresses[i][7],
                 };
             }
         }
@@ -258,14 +261,7 @@ class EtherAddressLookup {
      */
     generateReplacementContent(label)
     {
-        let imgPrefix = "";
-        if (label.comment.includes("Upbit")) {
-            imgPrefix = `<img src="https://assets.coingecko.com/markets/images/117/small/upbit.png?1520388800" style="width:1.5em;height:auto;">`
-        }
-        else if (label.comment.includes("Bithumb")) {
-            imgPrefix = `<img src="https://assets.coingecko.com/markets/images/6/small/bithumb_BI.png?1573104549" style="width:1.5em;height:auto;">`
-        }
-        return  imgPrefix +
+        return  `<img class="ext-etheraddresslookup-label-img" src=${label.entityImage} style="width:1.5em;height:auto;">` +
                 `<a title="See this address on the blockchain explorer" ` +
                 `href="${label.chain.blockExplorerPrefix}${label.address}${label.chain.blockExplorerPostfix}" ` +
                 `class="ext-etheraddresslookup-link" ` +
