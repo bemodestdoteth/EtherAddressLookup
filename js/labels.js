@@ -436,7 +436,7 @@ class Labels {
 
             let entity = document.querySelector(FORM_ENTITY_SELECTOR).options[document.querySelector(FORM_ENTITY_SELECTOR).selectedIndex].textContent;
             let entityImage;
-            if (entity === "Entity (Optional)") {
+            if (entity === "Entity (Optional)" || entity === "") {
                 entity = "";
                 entityImage = "";
             } else {

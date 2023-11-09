@@ -261,11 +261,12 @@ class EtherAddressLookup {
      */
     generateReplacementContent(label)
     {
-        return  `<img class="ext-etheraddresslookup-label-img" src=${label.entityImage} style="width:1.5em;height:auto;">` +
+        const imgTag = label.entityImage === "" ? "" : `<img class="ext-etheraddresslookup-label-img" src=${label.entityImage} style="width:1.5em;height:auto;">`;
+        return  imgTag +
                 `<a title="See this address on the blockchain explorer" ` +
                 `href="${label.chain.blockExplorerPrefix}${label.address}${label.chain.blockExplorerPostfix}" ` +
                 `class="ext-etheraddresslookup-link" ` +
-                `style="padding: 2px; background: ${label.chain.bgColor}; color: ${label.chain.fontColor}!important; border: 1px solid;"` + 
+                `style="padding: 2px; background: ${label.chain.bgColor}; color: ${label.chain.fontColor}!important; border: 1px solid; border-radius: 0.25rem;"` + 
                 `target="_blank">${label.label}</a>`;
     }
 
