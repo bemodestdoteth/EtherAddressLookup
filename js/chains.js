@@ -636,6 +636,22 @@ class Wax extends Chains {
     }
 }
 
+class Elrond extends Chains {
+    constructor() {
+        super(
+            "Elrond",
+            "EGLD",
+            "https://explorer.multiversx.com/accounts/",
+            "",
+            false,
+            "linear-gradient(to bottom, #000000, #23F6DC, #000000)",
+            WHITE,
+            [/(^|\s|:|-)((erd)[a-z-A-Z0-9]{59})(\s|$)/gi],
+            true
+        );
+    }
+}
+
 const chainClasses = {
     Ethereum,
     Bitcoin,
@@ -676,6 +692,7 @@ const chainClasses = {
     Sei,
     Celestia,
     Wax,
+    Elrond,
 };
 
 // Function to create an instance from a string
