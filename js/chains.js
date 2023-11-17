@@ -159,7 +159,7 @@ class ArbitrumNova extends EVM {
             "https://nova.arbiscan.io/address/",
             "",
             false,
-            "#EC852D",
+            "linear-gradient(to right, #FF69B4, #EC852D, #FF69B4)",
             BLACK
         );
     }
@@ -569,8 +569,8 @@ class PolygonZkEVM extends EVM {
             "https://zkevm.polygonscan.com/address/",
             "",
             false,
-            "#8E44AD",
-            BLACK
+            "linear-gradient(to right, #8E44AD, #AA5BF2, #8E44AD)",
+            WHITE
         );
     }
 }
