@@ -353,6 +353,22 @@ class Ark extends Chains {
     }
 }
 
+class Aergo extends Chains {
+    constructor() {
+        super(
+            "Aergo",
+            "AERGO",
+            "https://mainnet.aergoscan.io/account/",
+            "",
+            false,
+            "linear-gradient(to right, #269DCD, #EA3392)",
+            WHITE,
+            [/(^|\s|:|-)((Am)[A-Za-z0-9]{50})(\s|$)/gi],
+            true
+        );
+    }
+}
+
 class Solana extends Chains {
     constructor() {
         super(
@@ -688,6 +704,7 @@ const chainClasses = {
     Linea,
     Flow,
     Ark,
+    Aergo,
     Solana,
     Aptos,
     Sui,
