@@ -131,6 +131,7 @@ class EtherAddressLookup {
             "https://celoscan.io",
             "https://lineascan.build",
             "https://wemixscan.com/address",
+            "https://cronoscan.com/address",
         ];
         // const blockExplorers = window.getValueForEachChainsProxy("blockExplorer");
         // const blockExplorerHasIframe = window.getValueForEachChains("blockExplorerHasIframe");

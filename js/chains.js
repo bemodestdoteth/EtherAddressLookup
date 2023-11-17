@@ -209,6 +209,21 @@ class Fantom extends EVM {
     }
 }
 
+class Cronos extends EVM {
+    constructor() {
+        super(
+            "Cronos",
+            "CRO",
+            "https://cronoscan.com/address/",
+            "",
+            false,
+            "#050505",
+            WHITE
+        );
+        this.addDNStoRegexPatterns("cro");
+    }
+}
+
 class Klaytn extends EVM {
     constructor() {
         super(
@@ -301,7 +316,7 @@ class Linea extends EVM {
             "https://lineascan.build/address/",
             "",
             false,
-            "#050505",
+            "#A5A5A5",
             WHITE
         );
     }
@@ -663,6 +678,7 @@ const chainClasses = {
     Optimism,
     Tron,
     Fantom,
+    Cronos,
     Klaytn,
     Rei,
     Gnosis,
