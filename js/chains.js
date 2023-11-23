@@ -452,7 +452,7 @@ class Chiliz extends EVM {
         super(
             "Chiliz",
             "CHZ",
-            "https://scan.chiliz.com/address/",
+            "https://chiliscan.com/address/",
             "",
             false,
             "#800000",
