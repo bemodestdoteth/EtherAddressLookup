@@ -132,6 +132,7 @@ class EtherAddressLookup {
             "https://lineascan.build",
             "https://wemixscan.com/address",
             "https://cronoscan.com/address",
+            "https://scrollscan.com/address",
         ];
         // const blockExplorers = window.getValueForEachChainsProxy("blockExplorer");
         // const blockExplorerHasIframe = window.getValueForEachChains("blockExplorerHasIframe");
@@ -219,7 +220,7 @@ class EtherAddressLookup {
                 // Only start replacing stuff if the we get a RegEx match.
                 if(label !== undefined) {
                     // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
-                    const replacement = document.createElement('slot');
+                    const replacement = document.createElement('div');
                     replacement.setAttribute('class', 'ext-etheraddresslookup-temporary');
                     replacement.innerHTML = this.generateReplacementContent(label);
                     objNode.replaceChild(replacement, child);
