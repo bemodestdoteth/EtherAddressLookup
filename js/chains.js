@@ -522,7 +522,7 @@ class ZkSyncEra extends EVM {
         super(
             "ZkSyncEra",
             "ZKSYNC",
-            "https://explorer.zksync.io/address/",
+            "https://era.zksync.network/address/",
             "",
             false,
             "#3EA1D4",
