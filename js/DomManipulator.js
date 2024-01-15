@@ -134,6 +134,7 @@ class EtherAddressLookup {
             "https://cronoscan.com/address",
             "https://scrollscan.com/address",
             "https://kromascan.com/address",
+            "https://era.zksync.network/address"
         ];
         // const blockExplorers = window.getValueForEachChainsProxy("blockExplorer");
         // const blockExplorerHasIframe = window.getValueForEachChains("blockExplorerHasIframe");
