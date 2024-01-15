@@ -503,6 +503,20 @@ class Wemix extends EVM {
     }
 }
 
+class Kroma extends EVM {
+    constructor() {
+        super(
+            "Kroma",
+            "ETH",
+            "https://kromascan.com/address/",
+            "",
+            false,
+            "#7EE240",
+            WHITE
+        );
+    }
+}
+
 class Bora extends EVM {
     constructor() {
         super(
@@ -714,6 +728,7 @@ const chainClasses = {
     ChilizOld,
     Oasys,
     Wemix,
+    Kroma,
     Bora,
     ZkSyncEra,
     Starknet,

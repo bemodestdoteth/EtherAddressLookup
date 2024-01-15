@@ -133,6 +133,7 @@ class EtherAddressLookup {
             "https://wemixscan.com/address",
             "https://cronoscan.com/address",
             "https://scrollscan.com/address",
+            "https://kromascan.com/address",
         ];
         // const blockExplorers = window.getValueForEachChainsProxy("blockExplorer");
         // const blockExplorerHasIframe = window.getValueForEachChains("blockExplorerHasIframe");
