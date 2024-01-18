@@ -104,7 +104,7 @@ class OpBNB extends EVM {
             "https://opbnb.bscscan.com/address/",
             "",
             false,
-            "linear-gradient(to right, #FFC300, #46364B, #FFC300)",
+            "linear-gradient(to right, #FFC300, #FF5300, #FFC300)",
             BLACK
         );
         // Space ID
