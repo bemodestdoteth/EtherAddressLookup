@@ -96,6 +96,22 @@ class BNBChain extends EVM {
     }
 }
 
+class OpBNB extends EVM {
+    constructor() {
+        super(
+            "OpBNB",
+            "OPBNB",
+            "https://opbnb.bscscan.com/address/",
+            "",
+            false,
+            "linear-gradient(to right, #FFC300, #46364B, #FFC300)",
+            BLACK
+        );
+        // Space ID
+        this.addDNStoRegexPatterns("bnb");
+    }
+}
+
 class Polygon extends EVM {
     constructor() {
         super(
@@ -589,6 +605,34 @@ class PolygonZkEVM extends EVM {
     }
 }
 
+class MantaPacific extends EVM {
+    constructor() {
+        super(
+            "MantaPacific",
+            "MANTAPACIFIC",
+            "https://manta.socialscan.io/address/",
+            "",
+            false,
+            "linear-gradient(to right, #0CA2EA, #C670C8, #F368BA)",
+            WHITE
+        );
+    }
+}
+
+class Mantle extends EVM {
+    constructor() {
+        super(
+            "Mantle",
+            "MANTLE",
+            "https://explorer.mantle.xyz/addressXX/",
+            "",
+            false,
+            "linear-gradient(to right, #256A8B, #4FAAAA, #ABDDDA)",
+            WHITE
+        );
+    }
+}
+
 class Mina extends Chains {
     constructor() {
         super(
@@ -701,6 +745,7 @@ const chainClasses = {
     Ethereum,
     Bitcoin,
     BNBChain,
+    OpBNB,
     Polygon,
     Avalanche,
     Arbitrum,
@@ -734,6 +779,8 @@ const chainClasses = {
     Starknet,
     Scroll,
     PolygonZkEVM,
+    MantaPacific,
+    Mantle,
     Mina,
     Havah,
     Cosmos,
