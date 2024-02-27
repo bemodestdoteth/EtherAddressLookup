@@ -119,7 +119,7 @@ class EtherAddressLookup {
             "https://sepolia.etherscan.io",
             "https://bscscan.com",
             "https://polygonscan.com",
-            "https://snowtrace.io",
+            "https://snowscan.xyz",
             "https://arbiscan.io",
             "https://nova.arbiscan.io",
             "https://optimistic.etherscan.io",

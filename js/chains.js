@@ -142,7 +142,7 @@ class Avalanche extends EVM {
         super(
             "Avalanche",
             "AVAXC",
-            "https://snowtrace.io/address/",
+            "https://snowscan.xyz/address/",
             "",
             false,
             "#E74C3C",
@@ -390,7 +390,7 @@ class Solana extends Chains {
         super(
             "Solana",
             "SOL",
-            "https://solscan.io/account/",
+            "https://solana.fm/address/",
             "",
             false,
             "linear-gradient(to right, #00FFFF, #006666)",
@@ -555,7 +555,7 @@ class ZkSyncEra extends EVM {
             "https://era.zksync.network/address/",
             "",
             false,
-            "#3EA1D4",
+            "linear-gradient(to right, #54579A, #3EA1D4, #54579A)",
             WHITE
         );
     }
