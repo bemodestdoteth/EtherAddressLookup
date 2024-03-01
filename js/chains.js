@@ -591,6 +591,20 @@ class Scroll extends EVM {
     }
 }
 
+class Zora extends EVM {
+    constructor() {
+        super(
+            "Zora",
+            "ZORA",
+            "https://explorer.zora.energy/address/",
+            "",
+            false,
+            "linear-gradient(to right, #341417, #4c74e9, #eecde6)",
+            WHITE
+        );
+    }
+}
+
 class PolygonZkEVM extends EVM {
     constructor() {
         super(
@@ -624,10 +638,24 @@ class Mantle extends EVM {
         super(
             "Mantle",
             "MANTLE",
-            "https://explorer.mantle.xyz/addressXX/",
+            "https://explorer.mantle.xyz/address/",
             "",
             false,
             "linear-gradient(to right, #256A8B, #4FAAAA, #ABDDDA)",
+            WHITE
+        );
+    }
+}
+
+class Blast extends EVM {
+    constructor() {
+        super(
+            "Blast",
+            "BLAST",
+            "https://blastscan.io/address/",
+            "",
+            false,
+            "linear-gradient(to right, #131313, #FFFC67, #131313)",
             WHITE
         );
     }
@@ -778,9 +806,11 @@ const chainClasses = {
     ZkSyncEra,
     Starknet,
     Scroll,
+    Zora,
     PolygonZkEVM,
     MantaPacific,
     Mantle,
+    Blast,
     Mina,
     Havah,
     Cosmos,

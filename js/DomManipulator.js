@@ -136,6 +136,8 @@ class EtherAddressLookup {
             "https://kromascan.com/address",
             "https://era.zksync.network/address",
             "https://opbnb.bscscan.com/address",
+            "https://explorer.zora.energy",
+            "https://blastscan.io/address",
         ];
         // const blockExplorers = window.getValueForEachChainsProxy("blockExplorer");
         // const blockExplorerHasIframe = window.getValueForEachChains("blockExplorerHasIframe");
