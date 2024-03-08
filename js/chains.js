@@ -491,6 +491,20 @@ class ChilizOld extends EVM {
     }
 }
 
+class Ronin extends EVM {
+    constructor() {
+        super(
+            "Ronin",
+            "RON",
+            "https://app.roninchain.com/address/",
+            "",
+            false,
+            "linear-gradient(to bottom, #5096ED, #EEF1F5, #5096ED)",
+            BLACK
+        );
+    }
+}
+
 class Oasys extends EVM {
     constructor() {
         super(
@@ -771,6 +785,7 @@ const chainClasses = {
     Aurora,
     Chiliz,
     ChilizOld,
+    Ronin,
     Oasys,
     Wemix,
     Kroma,
