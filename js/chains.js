@@ -499,7 +499,7 @@ class Ronin extends EVM {
             "https://app.roninchain.com/address/",
             "",
             false,
-            "linear-gradient(to bottom, #5096ED, #EEF1F5, #5096ED)",
+            "linear-gradient(to bottom, #5096ED, #5096ED, #EEF1F5)",
             BLACK
         );
     }
@@ -751,6 +751,21 @@ class Celestia extends Chains {
     }
 }
 
+class XPLA extends Chains {
+    constructor() {
+        super(
+            "Xpla",
+            "XPLA",
+            "https://explorer.xpla.io/mainnet/address/",
+            "",
+            false,
+            "linear-gradient(to bottom, #00ABFF, #DFDFDF)",
+            BLACK,
+            [/(^|\s|:|-)(xpla1[0-9a-z]{38,58})(\s|$)/gi]
+        );
+    }
+}
+
 class Wax extends Chains {
     constructor() {
         super(
@@ -831,6 +846,7 @@ const chainClasses = {
     Cosmos,
     Sei,
     Celestia,
+    XPLA,
     Wax,
     Elrond,
 };
