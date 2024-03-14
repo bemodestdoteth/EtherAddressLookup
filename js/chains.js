@@ -751,7 +751,7 @@ class Celestia extends Chains {
     }
 }
 
-class XPLA extends Chains {
+class Xpla extends Chains {
     constructor() {
         super(
             "Xpla",
@@ -759,7 +759,7 @@ class XPLA extends Chains {
             "https://explorer.xpla.io/mainnet/address/",
             "",
             false,
-            "linear-gradient(to bottom, #00ABFF, #DFDFDF)",
+            "linear-gradient(to bottom, #00ABFF, #DFDFDF, #00ABFF)",
             BLACK,
             [/(^|\s|:|-)(xpla1[0-9a-z]{38,58})(\s|$)/gi]
         );
@@ -846,7 +846,7 @@ const chainClasses = {
     Cosmos,
     Sei,
     Celestia,
-    XPLA,
+    Xpla,
     Wax,
     Elrond,
 };
