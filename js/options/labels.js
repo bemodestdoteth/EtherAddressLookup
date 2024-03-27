@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
     const entities = new Entities();
     labels.fetchDataFromServer();
     labels.setupFormSubmitHandler();
+    labels.setupDownloadHandler();
     labels.setupFilterHandler();
     labels.setupResetHandler();
     labels.updateChainOption();

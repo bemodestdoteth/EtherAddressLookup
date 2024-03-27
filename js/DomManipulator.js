@@ -268,7 +268,7 @@ class EtherAddressLookup {
      */
     generateReplacementContent(label)
     {
-        const imgTag = label.entityImage === "" ? "" : `<img class="ext-etheraddresslookup-label-img" src=${label.entityImage} style="width:1.5em;height:auto;">`;
+        const imgTag = label.entityImage === "" ? "" : `<img class="ext-etheraddresslookup-label-img" src=${label.entityImage} style="width:1.2em;height:auto;">`;
         return  imgTag +
                 `<a title="See this address on the blockchain explorer" ` +
                 `href="${label.chain.blockExplorerPrefix}${label.address}${label.chain.blockExplorerPostfix}" ` +

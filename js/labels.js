@@ -124,7 +124,7 @@ class Labels {
         return true;
     }
 
-    // Development purpose
+    // Test code
     // async fetchDataFromServer() {
     //     const entityFile = await fetch('../test/data.json');
     //     const entityFile2 = await entityFile.text()
@@ -393,6 +393,44 @@ class Labels {
         this.addLabelsListEvents();
     }
 
+    /**
+     * @name setupDownloadHandler
+     * @desc Setup the download button handler
+     * @return {void}
+     */
+    setupDownloadHandler() {
+        // To download chrome storage data
+        document.getElementById('download-csv').addEventListener('click', async (event) => {
+            chrome.storage.local.get(null, (data) => {
+                // Convert data to CSV
+                const csvHeader = '\uFEFF' + "Address,Label,Code,Comment,Entity\n"; // UTF-8 BOM + header
+                const csvContent = Object.keys(data['labelledAddresses']).map(key => {
+                    return [
+                        key.trim(),
+                        data['labelledAddresses'][key].label.trim(),
+                        data['labelledAddresses'][key].code.trim(),
+                        data['labelledAddresses'][key].comment.trim(),
+                        data['labelledAddresses'][key].entity.trim(),
+                    ].join(',') + '\n';
+                }).join('');
+    
+                const csv = csvHeader + csvContent;
+
+                // Create a Blob from the CSV string
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+
+                // Create a download link
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = 'data.csv';
+
+                // Append the link to the DOM, trigger the download, and remove the link
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        });
+    }
 
     /**
      * @name getTemplate
