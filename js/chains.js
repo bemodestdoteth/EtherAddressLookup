@@ -675,6 +675,20 @@ class Blast extends EVM {
     }
 }
 
+class Metis extends EVM {
+    constructor() {
+        super(
+            "Metis",
+            "METIS",
+            "https://explorer.metis.io/address/",
+            "",
+            false,
+            "linear-gradient(to right, #00D2FF, #000000, #00D2FF)",
+            WHITE
+        );
+    }
+}
+
 class Mina extends Chains {
     constructor() {
         super(
@@ -841,6 +855,7 @@ const chainClasses = {
     MantaPacific,
     Mantle,
     Blast,
+    Metis,
     Mina,
     Havah,
     Cosmos,
