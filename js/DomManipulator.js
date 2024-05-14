@@ -130,14 +130,15 @@ class EtherAddressLookup {
             "https://zkevm.polygonscan.com",
             "https://celoscan.io",
             "https://lineascan.build",
-            "https://wemixscan.com/address",
-            "https://cronoscan.com/address",
-            "https://scrollscan.com/address",
-            "https://kromascan.com/address",
-            "https://era.zksync.network/address",
-            "https://opbnb.bscscan.com/address",
+            "https://wemixscan.com",
+            "https://cronoscan.com",
+            "https://scrollscan.com",
+            "https://kromascan.com",
+            "https://era.zksync.network",
+            "https://opbnb.bscscan.com",
             "https://explorer.zora.energy",
-            "https://blastscan.io/address",
+            "https://blastscan.io",
+            "https://mantlescan.xyz"
         ];
         // const blockExplorers = window.getValueForEachChainsProxy("blockExplorer");
         // const blockExplorerHasIframe = window.getValueForEachChains("blockExplorerHasIframe");
