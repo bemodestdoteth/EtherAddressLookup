@@ -421,7 +421,7 @@ class Sui extends Chains {
         super(
             "Sui",
             "SUI",
-            "https://suiscan.xyz/mainnet/address/",
+            "https://suivision.xyz/address/",
             "",
             false,
             "#9B59B6",
