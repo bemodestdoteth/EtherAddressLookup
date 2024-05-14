@@ -652,7 +652,7 @@ class Mantle extends EVM {
         super(
             "Mantle",
             "MANTLE",
-            "https://explorer.mantle.xyz/address/",
+            "https://mantlescan.xyz/address/",
             "",
             false,
             "linear-gradient(to right, #256A8B, #4FAAAA, #ABDDDA)",
