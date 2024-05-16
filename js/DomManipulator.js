@@ -236,9 +236,9 @@ class EtherAddressLookup {
     }
 
     async isLabelMatched(childContent, retrievedAddresses) {
-        let sliceAtBeginning = 5;
+        let sliceAtBeginning = 4;
         if (childContent.slice(0, 2).toLowerCase() === "0x") { // EVM address case
-            sliceAtBeginning = 6 // match string excluding "0x"
+            sliceAtBeginning = 5 // match string excluding "0x"
         }
         const sliceAtEnd = -4;
 
