@@ -139,7 +139,6 @@ class EtherAddressLookup {
             "https://explorer.zora.energy",
             "https://blastscan.io",
             "https://mantlescan.xyz",
-            "https://explorer.zora.energy",
         ];
         // const blockExplorers = window.getValueForEachChainsProxy("blockExplorer");
         // const blockExplorerHasIframe = window.getValueForEachChains("blockExplorerHasIframe");
