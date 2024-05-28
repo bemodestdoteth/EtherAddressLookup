@@ -138,7 +138,8 @@ class EtherAddressLookup {
             "https://opbnb.bscscan.com",
             "https://explorer.zora.energy",
             "https://blastscan.io",
-            "https://mantlescan.xyz"
+            "https://mantlescan.xyz",
+            "https://explorer.zora.energy",
         ];
         // const blockExplorers = window.getValueForEachChainsProxy("blockExplorer");
         // const blockExplorerHasIframe = window.getValueForEachChains("blockExplorerHasIframe");
