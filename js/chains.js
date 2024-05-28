@@ -390,7 +390,7 @@ class Solana extends Chains {
         super(
             "Solana",
             "SOL",
-            "https://solana.fm/address/",
+            "https://solscan.io/address/",
             "",
             false,
             "linear-gradient(to right, #00FFFF, #006666)",
