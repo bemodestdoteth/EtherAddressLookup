@@ -610,7 +610,7 @@ class Zora extends EVM {
         super(
             "Zora",
             "ZORA",
-            "https://explorer.zora.energy/address/",
+            "https://zora.superscan.network/address/",
             "",
             false,
             "linear-gradient(to right, #341417, #4c74e9, #eecde6)",
