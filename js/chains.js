@@ -390,7 +390,7 @@ class Solana extends Chains {
         super(
             "Solana",
             "SOL",
-            "https://solana.fm/address/",
+            "https://solscan.io/address/",
             "",
             false,
             "linear-gradient(to right, #00FFFF, #006666)",
@@ -624,7 +624,7 @@ class Zora extends EVM {
         super(
             "Zora",
             "ZORA",
-            "https://explorer.zora.energy/address/",
+            "https://zora.superscan.network/address/",
             "",
             false,
             "linear-gradient(to right, #341417, #4c74e9, #eecde6)",
