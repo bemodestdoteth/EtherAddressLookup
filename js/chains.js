@@ -605,6 +605,20 @@ class Scroll extends EVM {
     }
 }
 
+class Taiko extends EVM {
+    constructor() {
+        super(
+            "Taiko",
+            "TAIKO",
+            "https://taikoscan.io//address/",
+            "",
+            false,
+            "#E81899",
+            WHITE
+        );
+    }
+}
+
 class Zora extends EVM {
     constructor() {
         super(
@@ -850,6 +864,7 @@ const chainClasses = {
     ZkSyncEra,
     Starknet,
     Scroll,
+    Taiko,
     Zora,
     PolygonZkEVM,
     MantaPacific,
