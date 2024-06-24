@@ -610,7 +610,7 @@ class Taiko extends EVM {
         super(
             "Taiko",
             "TAIKO",
-            "https://taikoscan.io//address/",
+            "https://taikoscan.io/address/",
             "",
             false,
             "#E81899",
