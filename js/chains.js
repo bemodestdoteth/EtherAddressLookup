@@ -491,6 +491,20 @@ class ChilizOld extends EVM {
     }
 }
 
+class Core extends EVM {
+    constructor() {
+        super(
+            "Core",
+            "CORE",
+            "https://scan.coredao.org/address/",
+            "",
+            false,
+            "#FF9500",
+            BLACK
+        );
+    }
+}
+
 class Ronin extends EVM {
     constructor() {
         super(
@@ -856,6 +870,7 @@ const chainClasses = {
     Aurora,
     Chiliz,
     ChilizOld,
+    Core,
     Ronin,
     Oasys,
     Wemix,
