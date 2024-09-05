@@ -64,6 +64,20 @@ class Ethereum extends EVM {
     }
 }
 
+class EVMall extends EVM {
+    constructor() {
+        super(
+            "EVMall",
+            "EVM_ALL",
+            "https://etherscan.io/address/",
+            "",
+            true,
+            "#FAFAFA",
+            BLACK
+        );
+    }
+}
+
 class Bitcoin extends Chains {
     constructor() {
         super(
@@ -842,6 +856,7 @@ class Elrond extends Chains {
 
 const chainClasses = {
     Ethereum,
+    EVMall,
     Bitcoin,
     BNBChain,
     OpBNB,
