@@ -412,6 +412,8 @@ class Solana extends Chains {
             [/(^|\s|:|-)(?!0x)(?:[1-9A-HJ-NP-Za-km-z]{32,44})(\s|$)/g],
             true
         );
+        // Solana Name System
+        this.addDNStoRegexPatterns("sol");
     }
 }
 
