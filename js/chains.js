@@ -733,6 +733,20 @@ class Metis extends EVM {
     }
 }
 
+class VANA extends EVM {
+    constructor() {
+        super(
+            "Vana",
+            "VANA",
+            "https://vanascan.io/address/",
+            "",
+            false,
+            "#E3E1DB",
+            BLACK
+        );
+    }
+}
+
 class Mina extends Chains {
     constructor() {
         super(
