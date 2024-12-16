@@ -917,6 +917,7 @@ const chainClasses = {
     Mantle,
     Blast,
     Metis,
+    VANA,
     Mina,
     Havah,
     Cosmos,
