@@ -1,5 +1,3 @@
-let objBrowser = chrome ? chrome : browser;
-
 const EXT_PREFIX = 'ext-etheraddresslookup';
 const HOVER_POPUP_CLASS_NAME = `${EXT_PREFIX}-address_stats_hover`;
 const ADDRESS_DISPLAY_POPUP_CLASS_NAME = `${EXT_PREFIX}-display-popup`;
@@ -48,7 +46,6 @@ class EtherAddressLookup {
     }
 
     setDefaultExtensionSettings() {
-        this.blHighlight = false;
         this.blPerformAddressLookups = true;
 
         this.intSettingsCount = 0;
@@ -61,29 +58,38 @@ class EtherAddressLookup {
      */
     init()
     {
-        // let objBrowser = chrome ? chrome : browser;
-        // //Get the highlight option for the user
-        // objBrowser.runtime.sendMessage({func: "highlight_option"}, function(objResponse) {
+        try {
+            chrome.runtime.sendMessage({func: "getCompatibilityMode"}, (response) => {
+                this.compatibilityMode = response.compatibilityMode === "1";
+                console.log("Compatibility mode set to:", this.compatibilityMode);
+            });
+        } catch(error) {
+            console.error("Error getting compatibility mode:", error);
+            this.compatibilityMode = false; // Default fallback
+        }
+
+        // //Get the compatibility option for the user
+        // chrome.runtime.sendMessage({func: "compatibility_mode"}, function(objResponse) {
         //     if(objResponse && objResponse.hasOwnProperty("resp")) {
-        //         this.blHighlight = (objResponse.resp == 1);
+        //         this.blCompatibilityMode = (objResponse.resp == 1);
         //     }
         //     ++this.intSettingsCount;
         // }.bind(this));
 
         // //Get the blockchain explorer for the user
-        // objBrowser.runtime.sendMessage({func: "blockchain_explorer"}, function(objResponse) {
+        // chrome.runtime.sendMessage({func: "blockchain_explorer"}, function(objResponse) {
         //     this.strBlockchainExplorer = objResponse.resp;
         //     ++this.intSettingsCount;
         // }.bind(this));
 
         // //Get the perform address lookup option
-        // objBrowser.runtime.sendMessage({func: "perform_address_lookups"}, function(objResponse) {
+        // chrome.runtime.sendMessage({func: "perform_address_lookups"}, function(objResponse) {
         //     this.blPerformAddressLookups = objResponse.resp;
         //     ++this.intSettingsCount;
         // }.bind(this));
 
         // //Get the RPC network details
-        // objBrowser.runtime.sendMessage({ func: "rpc_details" }, function(objResponse) {
+        // chrome.runtime.sendMessage({ func: "rpc_details" }, function(objResponse) {
         //     let objDetails = JSON.parse(objResponse.resp);
         //     this.strRpcDetails = `${objDetails.name} (${objDetails.type})`;
         // }.bind(this));
@@ -237,11 +243,12 @@ class EtherAddressLookup {
     }
 
     async isLabelMatched(childContent, retrievedAddresses) {
-        let sliceAtBeginning = 4;
-        if (childContent.slice(0, 2).toLowerCase() === "0x") { // EVM address case
-            sliceAtBeginning = 5 // match string excluding "0x"
-        }
-        const sliceAtEnd = -4;
+        let sliceAtBeginning = this.compatibilityMode ? 4 : 6;
+        let sliceAtEnd = this.compatibilityMode ? -4 : -6;
+
+        // if (childContent.slice(0, 2).toLowerCase() === "0x") { // EVM address case
+        //     sliceAtBeginning = 4 // match string excluding "0x"
+        // }
 
         // Only check textNodes to prevent applying RegEx against element attributes
         // retrievedAddresses[i][0] = addresses
@@ -321,9 +328,12 @@ class EtherAddressLookup {
     }
 }
 
-chrome.action.onClicked.addListener((tab) => {
-    chrome.tabs.executeScript({
-        "func": convertAddressToLink,
-        "allFrames" : true
-    });
-});
+try {
+    chrome.browserAction.onClicked.addListener((tab) => {
+        chrome.tabs.executeScript(tab.id, {
+          code: '(' + convertAddressToLink.toString() + ')();'
+        });
+      });      
+} catch(e) {
+    console.log("Error in DomManipulator.js: " + e);
+}

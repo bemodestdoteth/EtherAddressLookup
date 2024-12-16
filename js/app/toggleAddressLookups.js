@@ -1,7 +1,7 @@
 //On page load it checks/unchecks the checkbox
-// (function() {
-//     refreshPerformAddressLookups();
-// })();
+(function() {
+    refreshPerformAddressLookups();
+})();
 
 //Sets the local storage to remember their RPC address lookup setting
 function togglePerformAddressLookups()
