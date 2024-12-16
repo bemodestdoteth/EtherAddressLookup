@@ -733,7 +733,7 @@ class Metis extends EVM {
     }
 }
 
-class VANA extends EVM {
+class Vana extends EVM {
     constructor() {
         super(
             "Vana",
@@ -917,7 +917,7 @@ const chainClasses = {
     Mantle,
     Blast,
     Metis,
-    VANA,
+    Vana,
     Mina,
     Havah,
     Cosmos,
