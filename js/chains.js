@@ -335,6 +335,7 @@ class Base extends EVM {
             "#3C40C6",
             WHITE
         );
+        this.addDNStoRegexPatterns("eth"); // .base.eth
     }
 }
 

@@ -243,6 +243,8 @@ class EtherAddressLookup {
     }
 
     async isLabelMatched(childContent, retrievedAddresses) {
+        let childContentFormatted = childContent.replace(/\*/, "").toLowerCase();
+        
         let sliceAtBeginning = this.compatibilityMode ? 4 : 6;
         let sliceAtEnd = this.compatibilityMode ? -4 : -6;
 
@@ -253,7 +255,7 @@ class EtherAddressLookup {
         // Only check textNodes to prevent applying RegEx against element attributes
         // retrievedAddresses[i][0] = addresses
         for (let i = 0; i < retrievedAddresses.length; i++) {
-            if ((retrievedAddresses[i][0].slice(0, sliceAtBeginning).toLowerCase() === childContent.slice(0, sliceAtBeginning).toLowerCase()) && (retrievedAddresses[i][0].slice(sliceAtEnd).toLowerCase() === childContent.slice(sliceAtEnd).toLowerCase())) {
+            if ((retrievedAddresses[i][0].slice(0, sliceAtBeginning).toLowerCase() === childContentFormatted.slice(0, sliceAtBeginning)) && (retrievedAddresses[i][0].slice(sliceAtEnd).toLowerCase() === childContentFormatted.slice(sliceAtEnd))) {
                 // Partial match also searches for full match
                 return {
                     address: retrievedAddresses[i][0],
@@ -328,12 +330,13 @@ class EtherAddressLookup {
     }
 }
 
-try {
-    chrome.browserAction.onClicked.addListener((tab) => {
-        chrome.tabs.executeScript(tab.id, {
-          code: '(' + convertAddressToLink.toString() + ')();'
-        });
-      });      
-} catch(e) {
-    console.log("Error in DomManipulator.js: " + e);
-}
+// try {
+//     chrome.browserAction.onClicked.addListener((tab) => {
+//         objBrowser.tabs.executeScript({
+//             "func": convertAddressToLink,
+//             "allFrames" : true
+//         });
+//     });
+// } catch(e) {
+//     console.log("Error in DomManipulator.js: " + e);
+// }
