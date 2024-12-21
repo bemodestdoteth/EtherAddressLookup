@@ -5,7 +5,18 @@ try {
     window.addEventListener("load", function() {
         console.log(`main.js loaded`);
         createExtensionInstance();
-    });    
+    });
+
+    // Add message listener
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        console.log("Received message:", request);
+        if (request.message === "convertAddresses") {
+            const eal = createExtensionInstance();
+            eal.convertAddressToLink();
+            sendResponse({status: "ok"});
+        }
+        return true;
+    });
 } catch(e) {
     console.log("Error in main.js: " + e);
 }

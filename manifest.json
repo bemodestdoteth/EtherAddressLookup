@@ -17,6 +17,15 @@
     "default_title": "EtherAddressLookup"
   },
 
+  "commands": {
+    "convert_addresses": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E"
+      },
+      "description": "Convert Ethereum addresses to links" 
+    }
+  },
+
   "permissions": [
     "activeTab",
     "storage",

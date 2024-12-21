@@ -6,7 +6,6 @@ try {
             console.log("Received message:", request);
 
             if(request.func === "getCompatibilityMode") {
-                console.log(1)
                 let mode = localStorage.getItem("ext-etheraddresslookup-compatibility_mode") || "1";
                 sendResponse({compatibilityMode: mode});
                 console.log("Sent response compatibilityMode: " + mode);
@@ -14,7 +13,6 @@ try {
     
             // Handle other message types
             if (typeof request.func !== "undefined") {
-                console.log(2)
                 if(typeof objEtherAddressLookup[request.func] == "function") {
                     objEtherAddressLookup[request.func]();
                     sendResponse({status: "ok"});
@@ -26,17 +24,19 @@ try {
         }
     );
     console.log("Background.js loaded");  
+
+    // Click handler
+    chrome.commands.onCommand.addListener((command) => {
+        if (command === "convert_addresses") {
+            chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+                chrome.tabs.sendMessage(tabs[0].id, {
+                    message: "convertAddresses"
+                });
+            });
+        }
+    });
+
+    console.log("Background script loaded successfully");
 } catch(e) {
     console.log("Error in background.js: " + e);
 }
-
-// try {
-//     chrome.browserAction.onClicked.addListener((tab) => {
-//         objBrowser.tabs.executeScript({
-//             "func": convertAddressToLink,
-//             "allFrames" : true
-//         });
-//     });
-// } catch(e) {
-//     console.log("Error in DomManipulator.js: " + e);
-// }

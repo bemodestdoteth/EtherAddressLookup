@@ -115,6 +115,7 @@ class EtherAddressLookup {
      */
     async convertAddressToLink()
     {
+        console.log(`Executing convertAddressToLink()`);
         const arrWhitelistedTags = ["div", "code", "span", "p", "td", "li", "em", "i", "b", "strong", "small", "a", "h1", "h2", "h3"];
         
         // Preprocessing to deal with iframes
